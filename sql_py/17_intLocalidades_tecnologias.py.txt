@@ -1,0 +1,15 @@
+# 'dataset' contiene los datos de entrada para este script
+
+# Función para obtener una lista de tipos de acceso si el contenido es 'SI'
+def obtener_tipos_acceso(row):
+    headers = list(dataset.columns)
+    tipos_acceso = []
+    for header in headers:
+        if row[header] == 'SI':
+            tipos_acceso.append(header)
+    return tipos_acceso if tipos_acceso else ['ninguno']
+
+dataset['Tecnologias'] = dataset.apply(obtener_tipos_acceso, axis=1)
+dataset['Latitud'] = dataset['Latitud'].replace('.', ',')
+
+dataset['Tecnologias'] = dataset.apply(obtener_tipos_acceso, axis=1)
